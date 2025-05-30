@@ -19,6 +19,7 @@ Route::get('/projects',[ProjectController::class,'getAll']);
 
 #====== ACCEDER A DOCUMENTATION DE SWAGGER =====
 http://127.0.0.1:8000/api/documentation
+levantar con: php artisan l5-swagger:generate
 
 
 
