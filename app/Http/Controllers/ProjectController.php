@@ -11,11 +11,25 @@ use Throwable;
 
 class ProjectController extends Controller
 {
+    public function getAll(Request $request){
+
+        $consulta   =   Project::query();
+        if($request->filled('name')){
+            $consulta->where('name','like','%'.$request->get('name').'%');
+        }
+
+        $projects   =   $consulta->paginate(10);
+
+        return response()->json($projects);
+    }
+
+    
     public function store(ProjectStoreRequest $request){
         DB::beginTransaction();
         try {
 
             $data       =   $request->validated();
+
             $project    =   Project::create($data);
 
             DB::commit();

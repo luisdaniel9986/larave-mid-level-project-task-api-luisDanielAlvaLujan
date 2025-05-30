@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/projects',[ProjectController::class,'getAll']); //agregar filtros
+Route::get('/projects',[ProjectController::class,'getAll']);
 Route::post('/projects',[ProjectController::class,'store']);
 Route::get('/projects/{id}',[ProjectController::class,'getOne']);
 Route::put('/projects/{id}',[ProjectController::class,'update']);

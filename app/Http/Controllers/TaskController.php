@@ -12,6 +12,18 @@ use Throwable;
 class TaskController extends Controller
 {
 
+public function getAll(Request $request){
+
+        $consulta   =   Task::query();
+        if($request->filled('title')){
+            $consulta->where('title','like','%'.$request->get('title').'%');
+        }
+
+        $tasks   =   $consulta->paginate(10);
+
+        return response()->json($tasks);
+}
+
 public function store(TaskStoreRequest $request){
         DB::beginTransaction();
         try {

@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
 
-class Task extends Model implements Auditable
+
+class Task extends Model 
 {
-    use \OwenIt\Auditing\Auditable;
+
 
     protected $fillable = [
         'project_id',
